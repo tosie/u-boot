@@ -370,8 +370,9 @@ static void set_serial_number(void)
 	int ret;
 	char serial_string[17] = { 0 };
 
-	if (env_get("serial#"))
-		return;
+    // => Always re-read the serial# from the board
+	// if (env_get("serial#"))
+	//	return;
 
 	BCM2835_MBOX_INIT_HDR(msg);
 	BCM2835_MBOX_INIT_TAG_NO_REQ(&msg->get_board_serial, GET_BOARD_SERIAL);
